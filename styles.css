@@ -196,11 +196,30 @@ details[open]{ animation: reveal .35s ease }
   transform: translateY(40px);
   transition: all 1s ease-out;
 }
+
 .about-block img {
-  width: 400px;
+  width: 420px;              /* fixed width */
+  height: 280px;             /* fixed height */
+  object-fit: cover;         /* crop to fit the box */
   border-radius: 16px;
   box-shadow: var(--shadow);
+  flex-shrink: 0;            /* prevents shrinking in flexbox */
 }
+
+
+.about-block h3 {
+  font-size: 2rem;           /* bigger title */
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  color: var(--ink);
+}
+
+.about-block p {
+  font-size: 1.1rem;         /* slightly bigger text for balance */
+  line-height: 1.7;
+  color: var(--muted);
+}
+
 .about-block.show {
   opacity: 1;
   transform: translateY(0);
