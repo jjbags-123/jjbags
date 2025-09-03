@@ -322,6 +322,16 @@ details[open]{ animation: reveal .35s ease }
   0% { transform: scaleY(1); opacity: 1; }
   100% { transform: scaleY(0); opacity: 0; }
 }
+/* Scrolling Banner */
+.scrolling-banner {
+  width: 100%;
+  background: #556B2F;   /* dark olive green */
+  color: #F2F5D0;        /* light text */
+  font-weight: 600;
+  padding: 6px 0;
+  overflow: hidden;
+  position: relative;
+}
 .scrolling-banner p {
   display: inline-block;
   white-space: nowrap;
