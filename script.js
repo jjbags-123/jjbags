@@ -77,3 +77,21 @@ const revealOnScroll = () => {
 
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
+window.addEventListener("load", () => {
+  const splash = document.getElementById("splash");
+  const blackout = document.getElementById("blackout");
+
+  // Show blackout first
+  blackout.style.display = "block";
+
+  // Play closing animation
+  setTimeout(() => {
+    blackout.style.animation = "blackout-close 1.2s ease forwards";
+  }, 200); // slight delay for smooth effect
+
+  // Hide splash screen
+  setTimeout(() => {
+    splash.classList.add("hidden");
+  }, 1800); // after blackout finishes
+});
+
