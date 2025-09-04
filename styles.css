@@ -270,11 +270,22 @@ details[open]{ animation: reveal .35s ease }
     grid-template-columns: 1fr;
     text-align: center;
   }
-  .foot-links, .socials {
+  .foot-links {
     margin-top: 1rem;
   }
   .nav{ display:none }
   .menu{ display:block }
+}
+.socials a {
+  color: #c9c9c2;
+  text-decoration: none;
+  margin-right: 1rem;
+  font-size: 1.5rem; /* bigger icons */
+  transition: color 0.3s ease;
+}
+
+.socials a:hover {
+  color: #ffffff; /* turns white on hover */
 }
 /* Splash Screen */
 #splash {
