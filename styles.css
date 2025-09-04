@@ -95,16 +95,18 @@ img{ max-width:100%; display:block }
 .section-head h2{ font-size:2rem; margin:0 0 .3rem }
 .section-head p{ color:var(--muted); margin:0 }
 
-.cards{
-  margin-top:2rem; display:grid; gap:1.6rem;
-  grid-template-columns: repeat(3, 1fr);
-}
+/* Cards / Bags */
+.cards{ margin-top:2rem; display:grid; gap:1.6rem; grid-template-columns: repeat(3, 1fr); }
 .card{ background:var(--panel); border:1px solid var(--line); border-radius:18px; overflow:hidden; box-shadow:var(--shadow); transform:translateZ(0); transition: box-shadow .2s ease, transform .2s ease }
 .card:hover{ box-shadow:0 14px 40px rgba(0,0,0,.12); transform: translateY(-2px) }
-.card-media img{ width:100%; height:260px; object-fit:cover }
+.card-media img{ 
+  width:100%; 
+  height:260px; 
+  object-fit:contain; /* fit bags properly without cropping */
+  background:#fff; 
+  padding:10px; 
+}
 .card-body{ padding:1.1rem 1.1rem 1.3rem }
-.card-body h3{ margin:.2rem 0 .4rem }
-.card-body p{ margin:.2rem 0 .8rem; color:var(--muted) }
 details{ border-top:1px dashed #cfe2cf; padding-top:.8rem }
 details > summary{ list-style:none; cursor:pointer; font-weight:700; color:var(--ink) }
 details > summary::marker, details > summary::-webkit-details-marker{ display:none }
