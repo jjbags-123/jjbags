@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'FKGroteskNeue';
+  src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   :root {
     /* Primitive Color Tokens */
@@ -42,7 +50,7 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 60 9.1% 97.8%;
     --border: 36 21% 35% / 0.2;
-    --input: 36 21% 35% / 0.2;
+    --input: 36 21% 35% / 0_2;
     --ring: 148 43% 18%; /* #1B4332 */
     --radius: 0.5rem;
 
@@ -80,13 +88,8 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-inter), sans-serif;
   }
-}
-
-@font-face {
-  font-family: 'FKGroteskNeue';
-  src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2') format('woff2');
-  font-display: swap;
 }
 
 html {
@@ -497,5 +500,3 @@ html {
     padding-left: 2rem;
   }
 }
-
-    
