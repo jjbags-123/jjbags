@@ -4,7 +4,8 @@
   "private": true,
   "browserslist": [
     "> 0.5%",
-    "not dead"
+    "not dead",
+    "not op_mini all"
   ],
   "scripts": {
     "dev": "next dev --turbopack -p 9002",
@@ -47,7 +48,7 @@
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "firebase": "^11.9.1",
-    "framer-motion": "^11.11.0",
+    "framer-motion": "^11.3.19",
     "genkit": "^1.24.0",
     "lucide-react": "^0.475.0",
     "next": "15.3.3",
@@ -73,3 +74,5 @@
     "typescript": "^5"
   }
 }
+
+    

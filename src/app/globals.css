@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'FKGroteskNeue';
-  src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2') format('woff2');
+  src: url('/fonts/FKGroteskNeue.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -127,22 +127,6 @@ html {
   position: relative;
   background: hsl(var(--primary) / 0.05);
   overflow: hidden;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, hsl(var(--primary) / 0.05) 0%, transparent 70%);
-  animation: heroFloat 20s ease-in-out infinite;
-}
-
-@keyframes heroFloat {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  50% { transform: translate(10%, 10%) rotate(5deg); }
 }
 
 .hero-content {
@@ -500,3 +484,5 @@ html {
     padding-left: 2rem;
   }
 }
+
+    
