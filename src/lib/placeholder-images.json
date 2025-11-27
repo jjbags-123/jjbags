@@ -1,0 +1,130 @@
+{
+  "placeholderImages": [
+    {
+      "id": "product-jute-plain",
+      "description": "Plain Jute Bag",
+      "imageUrl": "/images/products/plain-jute.webp",
+      "imageHint": "jute bag"
+    },
+    {
+      "id": "product-jute-laminated",
+      "description": "PE Laminated Jute Bag",
+      "imageUrl": "/images/products/pe-laminated.webp",
+      "imageHint": "laminated bag"
+    },
+    {
+      "id": "product-jute-printed",
+      "description": "Printed Jute Bag",
+      "imageUrl": "/images/products/printed-jute.webp",
+      "imageHint": "printed bag"
+    },
+    {
+      "id": "product-jute-designer",
+      "description": "Designer Jute Bag",
+      "imageUrl": "/images/products/designer-jute.webp",
+      "imageHint": "designer bag"
+    },
+    {
+      "id": "product-juco-plain",
+      "description": "Plain Juco Bag",
+      "imageUrl": "/images/products/plain-juco.webp",
+      "imageHint": "juco bag"
+    },
+    {
+      "id": "product-juco-premium",
+      "description": "Premium Juco Shopping Bag",
+      "imageUrl": "/images/products/premium-juco.webp",
+      "imageHint": "shopping bag"
+    },
+    {
+      "id": "product-tote-plain",
+      "description": "Plain Tote Bag",
+      "imageUrl": "/images/products/plain-tote.webp",
+      "imageHint": "tote bag"
+    },
+    {
+      "id": "product-tote-premium",
+      "description": "Premium Printed Tote Bag",
+      "imageUrl": "/images/products/premium-tote.webp",
+      "imageHint": "printed tote"
+    },
+    {
+      "id": "product-non-woven-printed",
+      "description": "Printed Non-Woven Bag",
+      "imageUrl": "/images/products/plain-woven.webp",
+      "imageHint": "woven bag"
+    },
+    {
+      "id": "product-non-woven-d-cut",
+      "description": "D-Cut Non-Woven Bag",
+      "imageUrl": "/images/products/woven-bags-d.webp",
+      "imageHint": "d-cut bag"
+    },
+    {
+      "id": "client-1",
+      "description": "Placeholder for client logo 1",
+      "imageUrl": "https://images.unsplash.com/photo-1529612700005-e35377bf1415?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjb21wYW55JTIwbG9nb3xlbnwwfHx8fDE3NjM1Nzc2MjZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "company logo"
+    },
+    {
+      "id": "client-2",
+      "description": "Placeholder for client logo 2",
+      "imageUrl": "https://images.unsplash.com/photo-1620288627223-53302f4e8c74?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjb21wYW55JTIwbG9nb3xlbnwwfHx8fDE3NjM1Nzc2MjZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "company logo"
+    },
+    {
+      "id": "client-3",
+      "description": "Placeholder for client logo 3",
+      "imageUrl": "https://images.unsplash.com/photo-1496200186974-4293800e2c20?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjb21wYW55JTIwbG9nb3xlbnwwfHx8fDE3NjM1Nzc2MjZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "company logo"
+    },
+    {
+      "id": "client-4",
+      "description": "Placeholder for client logo 4",
+      "imageUrl": "https://images.unsplash.com/photo-1619551734325-81aaf323686c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxjb21wYW55JTIwbG9nb3xlbnwwfHx8fDE3NjM1Nzc2MjZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "company logo"
+    },
+    {
+      "id": "client-5",
+      "description": "Placeholder for client logo 5",
+      "imageUrl": "https://images.unsplash.com/photo-1549924231-f129b911e442?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjb21wYW55JTIwbG9nb3xlbnwwfHx8fDE3NjM1Nzc2MjZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "company logo"
+    },
+    {
+      "id": "history-bags",
+      "description": "A lightbulb glowing, representing innovation in design",
+      "imageUrl": "/images/innovation.webp",
+      "imageHint": "innovation lightbulb"
+    },
+    {
+      "id": "blog-plastic-pollution",
+      "description": "A plastic bag floating in the ocean, representing the environmental impact of single-use plastics.",
+      "imageUrl": "/images/blog/No Plastics.webp",
+      "imageHint": "plastic pollution"
+    },
+    {
+      "id": "blog-fabric-texture",
+      "description": "A close-up shot showing the texture of jute and cotton fabrics side-by-side.",
+      "imageUrl": "/images/blog/jacovsjute.webp",
+      "imageHint": "fabric texture"
+    },
+    {
+      "id": "blog-sustainable-lifestyle",
+      "description": "A person holding a reusable bag at a farmers market, representing a sustainable lifestyle.",
+      "imageUrl": "/images/blog/Sustainable Lifestyle.webp",
+      "imageHint": "sustainable lifestyle"
+    },
+    {
+      "id": "blog-packaging-solution",
+      "description": "Eco-friendly packaging solutions on a table, representing industry trends.",
+      "imageUrl": "/images/blog/Industry Trends.webp",
+      "imageHint": "packaging solution"
+    },
+    {
+      "id": "blog-artisan-community",
+      "description": "A group of artisans working together, representing community and fair trade.",
+      "imageUrl": "/images/blog/Fair Trade & Ethical Manufacturing.webp",
+      "imageHint": "artisan community"
+    }
+  ]
+}
