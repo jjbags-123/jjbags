@@ -91,8 +91,14 @@ export default {
           '100%': { opacity: '1' },
         },
         'whatsapp-pulse': {
-          '0%, 100%': { transform: 'scale(1)', boxShadow: '0 0 0 0 rgba(37, 211, 102, 0.5)' },
-          '50%': { transform: 'scale(1.05)', boxShadow: '0 0 0 10px rgba(37, 211, 102, 0)' },
+          '0%, 100%': {
+            transform: 'scale(1)',
+            boxShadow: '0 0 0 0 rgba(37, 211, 102, 0.7)',
+          },
+          '70%': {
+            transform: 'scale(1.1)',
+            boxShadow: '0 0 0 15px rgba(37, 211, 102, 0)',
+          },
         },
       },
       animation: {

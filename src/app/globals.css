@@ -2,79 +2,79 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  /* Primitive Color Tokens */
-  --color-white: 255 255 255;
-  --color-black: 0 0 0;
-  --color-cream-50: 252 252 249;
-  --color-cream-100: 255 255 253;
-  --color-gray-200: 245 245 245;
-  --color-gray-300: 167 169 169;
-  --color-gray-400: 119 124 124;
-  --color-slate-500: 98 108 113;
-  --color-brown-600: 94 82 64;
-  --color-charcoal-700: 31 33 33;
-  --color-charcoal-800: 38 40 40;
-  --color-slate-900: 19 52 59;
-  --color-teal-500: 33 128 141;
-  --color-teal-600: 29 116 128;
-
-  /* JJ Bags Specific Colors */
-  --color-eco-green: 76 151 92;
-  --color-earth-brown: 139 115 85;
-
-  /* Semantic Color Tokens (Light Mode) */
-  --background: 48 33% 97%; /* --color-cream-50 */
-  --foreground: 195 65% 14%; /* --color-slate-900 */
-  --card: 54 100% 99%; /* --color-cream-100 */
-  --card-foreground: 195 65% 14%;
-  --popover: 54 100% 99%;
-  --popover-foreground: 195 65% 14%;
-  --primary: 148 43% 18%; /* #1B4332 */
-  --primary-foreground: 48 33% 97%;
-  --secondary: 36 21% 35% / 0.12; /* --color-brown-600 with opacity */
-  --secondary-foreground: 195 65% 14%;
-  --muted: 210 4% 96%;
-  --muted-foreground: 200 10% 40%; /* --color-slate-500 */
-  --accent: 36 21% 35% / 0.2; /* --color-secondary-hover */
-  --accent-foreground: 195 65% 14%;
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 60 9.1% 97.8%;
-  --border: 36 21% 35% / 0.2;
-  --input: 36 21% 35% / 0.2;
-  --ring: 148 43% 18%; /* #1B4332 */
-  --radius: 0.5rem;
-
-  --color-eco-green-light: 132 35% 45% / 0.1;
-
-  --footer-bg: 159 56% 7%; /* #081C15 */
-}
-
-.dark {
-  --background: 210 4% 9%;
-  --foreground: 210 20% 98%;
-  --card: 210 4% 12%;
-  --card-foreground: 210 20% 98%;
-  --popover: 210 4% 9%;
-  --popover-foreground: 210 20% 98%;
-  --primary: 148 40% 60%;
-  --primary-foreground: 148 43% 10%;
-  --secondary: 210 4% 45% / 0.15;
-  --secondary-foreground: 210 20% 98%;
-  --muted: 215 14% 15%;
-  --muted-foreground: 217 10% 65%;
-  --accent: 215 14% 25%;
-  --accent-foreground: 210 20% 98%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 210 20% 98%;
-  --border: 210 4% 45% / 0.3;
-  --input: 210 4% 45% / 0.3;
-  --ring: 148 40% 60%;
-  --color-eco-green-light: 132 35% 65% / 0.1;
-  --footer-bg: 159 56% 7%; /* #081C15 */
-}
-
 @layer base {
+  :root {
+    /* Primitive Color Tokens */
+    --color-white: 255 255 255;
+    --color-black: 0 0 0;
+    --color-cream-50: 252 252 249;
+    --color-cream-100: 255 255 253;
+    --color-gray-200: 245 245 245;
+    --color-gray-300: 167 169 169;
+    --color-gray-400: 119 124 124;
+    --color-slate-500: 98 108 113;
+    --color-brown-600: 94 82 64;
+    --color-charcoal-700: 31 33 33;
+    --color-charcoal-800: 38 40 40;
+    --color-slate-900: 19 52 59;
+    --color-teal-500: 33 128 141;
+    --color-teal-600: 29 116 128;
+
+    /* JJ Bags Specific Colors */
+    --color-eco-green: 76 151 92;
+    --color-earth-brown: 139 115 85;
+
+    /* Semantic Color Tokens (Light Mode) */
+    --background: 48 33% 97%; /* --color-cream-50 */
+    --foreground: 195 65% 14%; /* --color-slate-900 */
+    --card: 54 100% 99%; /* --color-cream-100 */
+    --card-foreground: 195 65% 14%;
+    --popover: 54 100% 99%;
+    --popover-foreground: 195 65% 14%;
+    --primary: 148 43% 18%; /* #1B4332 */
+    --primary-foreground: 48 33% 97%;
+    --secondary: 36 21% 35% / 0.12; /* --color-brown-600 with opacity */
+    --secondary-foreground: 195 65% 14%;
+    --muted: 210 4% 96%;
+    --muted-foreground: 200 10% 40%; /* --color-slate-500 */
+    --accent: 36 21% 35% / 0.2; /* --color-secondary-hover */
+    --accent-foreground: 195 65% 14%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 36 21% 35% / 0.2;
+    --input: 36 21% 35% / 0.2;
+    --ring: 148 43% 18%; /* #1B4332 */
+    --radius: 0.5rem;
+
+    --color-eco-green-light: 132 35% 45% / 0.1;
+
+    --footer-bg: 159 56% 7%; /* #081C15 */
+  }
+
+  .dark {
+    --background: 210 4% 9%;
+    --foreground: 210 20% 98%;
+    --card: 210 4% 12%;
+    --card-foreground: 210 20% 98%;
+    --popover: 210 4% 9%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 148 40% 60%;
+    --primary-foreground: 148 43% 10%;
+    --secondary: 210 4% 45% / 0.15;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 215 14% 15%;
+    --muted-foreground: 217 10% 65%;
+    --accent: 215 14% 25%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 210 4% 45% / 0.3;
+    --input: 210 4% 45% / 0.3;
+    --ring: 148 40% 60%;
+    --color-eco-green-light: 132 35% 65% / 0.1;
+    --footer-bg: 159 56% 7%; /* #081C15 */
+  }
+
   * {
     @apply border-border;
   }
@@ -86,6 +86,7 @@
 @font-face {
   font-family: 'FKGroteskNeue';
   src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2') format('woff2');
+  font-display: swap;
 }
 
 html {

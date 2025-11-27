@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
@@ -79,6 +80,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable}`}>
+        <head>
+            <link rel="preconnect" href="https://r2cdn.perplexity.ai" />
+        </head>
       <body>
         {children}
         <Toaster />
