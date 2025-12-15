@@ -13,8 +13,8 @@ export async function GET(request: NextRequest) {
   const host = headers.get('host');
 
   let siteUrl: string;
-  if (host === 'jj-bags.com') {
-    siteUrl = 'https://jj-bags.com';
+  if (host === 'www.jj-bags.com' || host === 'jj-bags.com') {
+    siteUrl = 'https://www.jj-bags.com';
   } else {
     // Default to .in for any other host (including localhost, vercel previews, etc.)
     siteUrl = 'https://jjbags.in';
