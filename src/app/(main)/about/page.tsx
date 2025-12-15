@@ -11,8 +11,8 @@ import { AnimatedCounter } from '@/components/animated-counter';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const missionData = {
-  title: "Our Mission",
-  content: "We are dedicated to crafting premium, eco-friendly bags that blend sustainability with style. Our mission is to provide a green alternative to plastic without compromising on quality or design.",
+  title: "Our Mission: Sustainable Style & Quality",
+  content: "We are dedicated to crafting premium, eco-friendly bags that blend sustainability with style. Our mission is to provide a green alternative to plastic without compromising on quality or design, focusing on creating the best sustainable bags in India.",
   imageId: "about-mission"
 }
 
@@ -31,7 +31,7 @@ const originData = {
 };
 
 const craftsmanshipData = {
-  title: "Craftsmanship",
+  title: "Unmatched Craftsmanship",
   description: "Every JJ Bag is a result of careful craftsmanship. From the first cut of jute or juco fabric to the final stitch, our artisans ensure precision and durability in every detail. The textures of natural fibers give each bag a unique character, while our quality standards guarantee long-lasting strength.",
   cards: [
     {
@@ -58,38 +58,38 @@ const craftsmanshipData = {
 }
 
 const sustainabilityData = {
-    title: "Sustainability",
-    content: "At JJ Bags, sustainability is at the heart of everything we do. We adopt clean, eco-conscious processes that reduce waste, conserve energy, and minimize our carbon footprint.",
+    title: "Commitment to Sustainability",
+    content: "At JJ Bags, sustainability is at the heart of everything we do. We adopt clean, eco-conscious processes that produce biodegradable bags, reduce waste, conserve energy, and minimize our carbon footprint.",
     features: ["Renewable raw materials", "Biodegradable inks and dyes", "Energy conservation", "Waste reduction"],
     imageId: "about-sustainability"
 };
 
 const fairPracticesData = {
-    title: "Fair Practices",
-    content: "We believe that sustainability goes beyond materials — it includes people too. Our bags are made under fair labor standards, where workers are provided with safe working conditions, fair wages, and respect. We partner with communities that share our values, empowering artisans and supporting livelihoods.",
+    title: "Fair Trade & Ethical Manufacturing",
+    content: "We believe sustainability includes people. We are a leading provider of fair trade jute bags in India, ensuring our products are made under ethical labor standards. Workers receive safe conditions, fair wages, and respect, empowering artisans and supporting communities.",
     imageId: "about-fair-practices"
 };
 
 const innovationData = {
-  title: "Innovation",
+  title: "Innovation in Eco-Friendly Design",
   content: "Innovation drives our designs. We continually explore new textures, materials, and eco-friendly techniques to stay ahead of trends while staying true to sustainability. From experimenting with blends of jute and cotton to incorporating reusable and multi-purpose designs, we push boundaries to create bags that are as fashionable as they are functional.",
   imageId: "about-innovation"
 };
 
 const globalReachData = {
-    title: "Global Reach",
-    content: "From local markets to international shelves, JJ Bags has grown into a globally trusted brand. Our products are exported worldwide, serving diverse industries such as retail, events, hospitality, and fashion. This global presence reflects not just our product quality but also our commitment to universal sustainability.",
+    title: "Global Reach for Sustainable Bags",
+    content: "From local markets to international shelves, JJ Bags has grown into a globally trusted brand for reusable bags. Our products are exported worldwide, serving diverse industries such as retail, events, hospitality, and fashion. This global presence reflects not just our product quality but also our commitment to universal sustainability.",
     imageId: "about-global-reach"
 };
 
 const customizationData = {
-    title: "Customization",
-    content: "We understand that every brand has its own story. That's why we provide extensive customization options — from sizes and colors to unique prints and branding elements. Businesses can showcase their identity while staying eco-conscious, and individuals can own bags that reflect their personal style.",
+    title: "Customized Canvas & Jute Bags",
+    content: "We understand that every brand has its own story. That's why we provide extensive customization options for our jute and canvas bags — from sizes and colors to unique prints and branding elements. Businesses can showcase their identity with eco-conscious corporate gift bags, and individuals can own bags that reflect their personal style.",
     imageId: "about-customization"
 };
 
 const futureData = {
-    title: "Our Future",
+    title: "Our Future: Beyond Sustainable Bags",
     content: "We see our journey as just the beginning. JJ Bags is committed to scaling sustainable solutions and driving innovation in eco-friendly alternatives. Our vision includes expanding into new product categories, exploring advanced biodegradable materials, and building stronger community partnerships. More than just a company, we aim to inspire a global shift towards responsible living — where sustainability is not an option, but a way of life."
 };
 
@@ -104,12 +104,12 @@ const valuesData = {
 };
 
 const impactData = {
-    title: "Eco Impact",
-    description: "Each JJ Bag makes a measurable difference",
+    title: "Our Eco Impact",
+    description: "Each JJ Bag makes a measurable difference in promoting a plastic-free lifestyle.",
     metrics: [
         { target: 1000, label: "Plastic Bags Saved", description: "per reusable bag", suffix: "+" },
         { target: 95, label: "Carbon Footprint Reduced", description: "vs. plastic alternatives", suffix: "%" },
-        { target: 50, label: "Communities Empowered", description: "artisan partnerships", suffix: "+" },
+        { target: 50, label: "Communities Empowered", description: "through fair trade", suffix: "+" },
         { target: 75, label: "Global Markets Served", description: "countries worldwide", suffix: "+" }
     ]
 }
@@ -127,7 +127,7 @@ export default function AboutPage() {
       <section className="hero">
         <div className="hero-content">
           <h1 className="hero-title">About JJ Bags</h1>
-          <p className="hero-tagline">Premium Eco-Friendly Bags</p>
+          <p className="hero-tagline">Leading Manufacturer of Sustainable & Reusable Bags in India</p>
           <a href="#mission" className="hero-cta">Explore Our Story</a>
         </div>
       </section>

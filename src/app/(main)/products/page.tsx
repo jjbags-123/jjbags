@@ -31,9 +31,9 @@ export default function ProductsPage() {
     <>
       <AnimatedSection className="container mx-auto px-4 py-12">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-headline">Bags with a Conscience</h1>
+          <h1 className="text-4xl md:text-5xl font-headline">Eco-Friendly Jute & Sustainable Bags</h1>
           <p className="mt-2 text-lg text-muted-foreground max-w-3xl mx-auto">
-            At JJ Bags, we are dedicated to crafting premium, eco-friendly bags that blend sustainability with style. Our collection includes a diverse range of bags made from natural materials such as jute, juco, and cotton, perfect for environmentally conscious consumers and businesses.
+            Discover our collection of high-quality, reusable bags in India. We craft a diverse range of biodegradable bags from natural materials like jute, juco, and cotton, perfect for eco-conscious consumers and businesses looking for sustainable solutions.
           </p>
         </div>
 

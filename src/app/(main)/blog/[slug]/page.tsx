@@ -8,7 +8,7 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { ProductRecommendations } from "@/components/product-recommendations";
 import { products } from "@/lib/data/products";
 import { AnimatedSection } from "@/components/animated-section";
-import { FiChevronLeft } from "react-icons/fi";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -33,6 +33,7 @@ export async function generateMetadata({ params }: BlogPostPageProps, parent: Re
 
   const previousImages = (await parent).openGraph?.images || []
   const image = PlaceHolderImages.find((p) => p.id === post.imageId);
+  const imageUrl = image ? `https://jjbags.in${image.imageUrl}` : 'https://jjbags.in/og-image.png';
 
 
   return {
@@ -41,13 +42,16 @@ export async function generateMetadata({ params }: BlogPostPageProps, parent: Re
     openGraph: {
       title: `${post.title} | JJ Bags Blog`,
       description: post.excerpt,
-      images: image ? [image.imageUrl, ...previousImages] : previousImages,
+      images: [imageUrl, ...previousImages],
+      type: 'article',
+      publishedTime: new Date(post.date).toISOString(),
+      authors: ['JJ Bags'],
     },
      twitter: {
       card: "summary_large_image",
       title: `${post.title} | JJ Bags Blog`,
       description: post.excerpt,
-      images: image ? [image.imageUrl] : [],
+      images: [imageUrl],
     },
   }
 }
@@ -63,15 +67,43 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
   const image = PlaceHolderImages.find((p) => p.id === post.imageId);
   const latestProducts = products.slice(0, 3);
 
+  const blogPostSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "image": image ? `https://jjbags.in${image.imageUrl}` : "",
+    "author": {
+      "@type": "Organization",
+      "name": "JJ Bags"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "JJ Bags",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://jjbags.in/logo.png"
+      }
+    },
+    "datePublished": new Date(post.date).toISOString(),
+    "description": post.excerpt
+  };
+
+  const breadcrumbItems = [
+    { label: "Home", href: "/" },
+    { label: "Blog", href: "/blog" },
+    { label: post.title, href: `/blog/${post.slug}`, isCurrent: true },
+  ];
+
   return (
     <AnimatedSection as="div" className="w-full">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostSchema) }}
+        />
         <div className="container mx-auto px-4">
           <article className="py-12 md:py-16 max-w-4xl mx-auto">
             <div className="mb-8">
-              <Link href="/blog" className="inline-flex items-center text-sm font-medium text-muted-foreground transition-colors duration-300 ease-in-out hover:text-foreground">
-                <FiChevronLeft className="mr-2 h-4 w-4" />
-                Back to Blog
-              </Link>
+              <Breadcrumbs items={breadcrumbItems} />
             </div>
             <header className="mb-8 text-center">
                 <p className="text-muted-foreground">{post.date} &bull; by {post.author}</p>

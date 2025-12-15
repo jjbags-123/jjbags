@@ -70,7 +70,7 @@ export default function MainLayout({
           href="https://wa.me/918248109131"
           target="_blank"
           rel="noopener noreferrer"
-          className="relative bg-green-500 text-white p-3 rounded-full shadow-lg flex items-center justify-center animate-whatsapp-pulse"
+          className="relative bg-green-500 text-white p-3 rounded-full shadow-lg flex items-center justify-center animate-whatsapp-pulse h-16 w-16"
         >
           <FaWhatsapp className="h-8 w-8" />
           <span className="sr-only">Chat on WhatsApp</span>

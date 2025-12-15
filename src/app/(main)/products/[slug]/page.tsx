@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -7,10 +8,10 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { FiChevronLeft } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 import { ProductRecommendations } from "@/components/product-recommendations";
 import { AnimatedSection } from "@/components/animated-section";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export async function generateStaticParams() {
   return products.map((product) => ({
@@ -35,21 +36,23 @@ export async function generateMetadata({ params }: ProductPageProps, parent: Res
 
   const previousImages = (await parent).openGraph?.images || []
   const image = PlaceHolderImages.find((p) => p.id === product.imageId);
+  const imageUrl = image ? `https://jjbags.in${image.imageUrl}` : 'https://jjbags.in/og-image.png';
 
 
   return {
-    title: `${product.name} - Eco-Friendly ${product.category} Bag`,
+    title: `${product.name} | Eco-Friendly ${product.category} Bag`,
     description: product.description,
     openGraph: {
-      title: `${product.name} - Eco-Friendly ${product.category} Bag`,
+      title: `${product.name} | Eco-Friendly ${product.category} Bag`,
       description: product.description,
-      images: image ? [image.imageUrl, ...previousImages] : previousImages,
+      images: [imageUrl, ...previousImages],
+      type: 'article',
     },
      twitter: {
       card: "summary_large_image",
-      title: `${product.name} - Eco-Friendly ${product.category} Bag`,
+      title: `${product.name} | Eco-Friendly ${product.category} Bag`,
       description: product.description,
-      images: image ? [image.imageUrl] : [],
+      images: [imageUrl],
     },
   }
 }
@@ -65,15 +68,47 @@ export default function ProductPage({ params }: ProductPageProps) {
   const latestProducts = products.slice(0, 4).filter(p => p.id !== product.id).slice(0, 3);
   const whatsappMessage = `Hi! I'm interested in the product: ${product.name} (${product.slug}). Can you provide more information?`;
   const whatsappUrl = `https://wa.me/918248109131?text=${encodeURIComponent(whatsappMessage)}`;
+  
+  const productSchema = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": product.name,
+    "image": image ? `https://jjbags.in${image.imageUrl}` : "",
+    "description": product.description,
+    "sku": product.id,
+    "brand": {
+      "@type": "Brand",
+      "name": "JJ Bags"
+    },
+     "offers": {
+      "@type": "Offer",
+      "url": `https://jjbags.in/products/${product.slug}`,
+      "priceCurrency": "INR",
+      "price": "0",
+      "itemCondition": "https://schema.org/NewCondition",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "Organization",
+        "name": "JJ Bags"
+      }
+    }
+  };
+
+  const breadcrumbItems = [
+    { label: "Home", href: "/" },
+    { label: "Products", href: "/products" },
+    { label: product.name, href: `/products/${product.slug}`, isCurrent: true },
+  ];
 
   return (
     <AnimatedSection as="div" className="w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="mb-8">
-          <Link href="/products" className="inline-flex items-center text-sm font-medium text-muted-foreground transition-colors duration-300 ease-in-out hover:text-foreground">
-            <FiChevronLeft className="mr-2 h-4 w-4" />
-            Back to Products
-          </Link>
+          <Breadcrumbs items={breadcrumbItems} />
         </div>
         <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-start">
           <div className="aspect-square w-full relative rounded-lg overflow-hidden shadow-lg">
@@ -85,6 +120,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                 className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 50vw"
                 data-ai-hint={image.imageHint}
+                priority
               />
             )}
           </div>

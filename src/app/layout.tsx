@@ -13,8 +13,8 @@ const inter = Inter({
 const siteConfig = {
   name: 'JJ Bags',
   url: 'https://jjbags.in',
-  description: 'High-quality, eco-friendly jute, juco, and tote bags for personal and corporate needs. Sustainable, stylish, and durable bags for a greener planet.',
-  ogImage: 'https://jjbags.in/og-image.png', // Should be absolute URL
+  description: 'Premium sustainable jute, cotton & canvas bags. Replace plastic with ethically-made, biodegradable alternatives. Free customization & worldwide shipping.',
+  ogImage: 'https://jjbags.in/og-image.png',
   links: {
     twitter: 'https://twitter.com/jjbags',
     facebook: 'https://facebook.com/jjbags'
@@ -24,7 +24,7 @@ const siteConfig = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} - Sustainable Jute and Tote Bags`,
+    default: "Eco-Friendly Jute Bags | Sustainable Alternatives to Plastic | JJ Bags",
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -38,6 +38,11 @@ export const metadata: Metadata = {
     "sustainable products",
     "JJ Bags",
     "custom bags",
+    "biodegradable bags",
+    "ethical manufacturing",
+    "jute bags India",
+    "eco bags Kolkata",
+    "sustainable bags Chennai"
   ],
   authors: [{ name: "JJ Bags", url: siteConfig.url }],
   creator: "JJ Bags",
@@ -78,10 +83,93 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "JJ Bags",
+    "url": "https://jjbags.in",
+    "logo": "https://jjbags.in/logo.png",
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+91-82481-09131",
+        "contactType": "customer service",
+        "areaServed": "IN"
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+91-63740-51113",
+        "contactType": "customer service",
+        "areaServed": "IN"
+      }
+    ],
+    "sameAs": [
+      "https://facebook.com/jjbags",
+      "https://twitter.com/jjbags"
+    ]
+  };
+
+  const localBusinessSchema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "JJ Bags - Chennai Office",
+      "description": "Leading manufacturer of eco-friendly jute and sustainable bags in Chennai.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "No.8/133 , Kalaignar street, Sithalapakkam",
+        "addressLocality": "Chennai",
+        "addressRegion": "Tamil Nadu",
+        "postalCode": "600131",
+        "addressCountry": "IN"
+      },
+      "telephone": "+91-82481-09131",
+      "image": "https://jjbags.in/logo.png",
+      "url": "https://jjbags.in",
+       "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 12.8847054,
+        "longitude": 80.1910913
+      },
+      "serviceArea": {
+        "@type": "AdministrativeArea",
+        "name": "India"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "JJ Bags - Kolkata Office",
+      "description": "Leading manufacturer of eco-friendly jute and sustainable bags in Kolkata.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Benaras Road (Opp. Bara Masjid), Eskara",
+        "addressLocality": "Howrah",
+        "addressRegion": "West Bengal",
+        "postalCode": "711323",
+        "addressCountry": "IN"
+      },
+      "telephone": "+91-63740-51113",
+      "image": "https://jjbags.in/logo.png",
+      "url": "https://jjbags.in",
+       "serviceArea": {
+        "@type": "Country",
+        "name": "India"
+      }
+    }
+  ];
+
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable}`}>
         <head>
-          
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+          />
         </head>
       <body>
         {children}
@@ -90,5 +178,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-    

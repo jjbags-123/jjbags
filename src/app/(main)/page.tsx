@@ -36,22 +36,25 @@ export default function Home() {
         <div className="container mx-auto grid md:grid-cols-2 gap-8 items-center py-16 md:py-20 px-4">
           <div className="text-center md:text-left">
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-headline tracking-tighter">
-              <span className="block">No Plastic is</span>
-              <span className="inline-block px-4 -skew-x-12 bg-primary text-primary-foreground">Fantastic</span>
+              No Plastic is
+              <br />
+              <span className="relative inline-block mt-2">
+                <span className="absolute inset-0 bg-primary transform -skew-y-2"></span>
+                <span className="relative text-primary-foreground italic px-4">Fantastic</span>
+              </span>
             </h1>
             <p className="mt-6 max-w-md mx-auto md:mx-0 text-lg text-muted-foreground">
-              Premium jute, juco, canvas, and non-woven bags. Built to last.
-              Designed to be loved.
+              Premium jute, juco, canvas, and non-woven bags for brands that value quality, sustainability, and long-term use.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row justify-center md:justify-start gap-4">
                 <Button asChild size="lg" className="transition-all duration-300 ease-in-out hover:scale-105">
                     <Link href="/products">
-                      Browse catalog
+                      Browse Catalog
                     </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="transition-all duration-300 ease-in-out hover:scale-105">
                     <Link href="/contact">
-                      Talk to us
+                      Talk to Us
                     </Link>
                 </Button>
             </div>
