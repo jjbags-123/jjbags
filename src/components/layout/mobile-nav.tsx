@@ -37,7 +37,7 @@ export function MobileNav() {
       </SheetTrigger>
       <SheetContent side="left" className="pr-0">
         <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
-          <Image src="/logo.png" alt="JJ Bags Logo" width={100} height={28} priority />
+          <Image src="/logo.png" alt="JJ Bags Logo" width={100} height={28} priority data-ai-hint="logo dark"/>
         </Link>
         <div className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
           <div className="flex flex-col space-y-3">

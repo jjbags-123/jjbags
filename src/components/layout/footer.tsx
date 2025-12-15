@@ -27,7 +27,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <Link href="/" aria-label="JJ Bags Home">
-               <Image src="/logo.png" alt="JJ Bags Logo" width={114} height={32} style={{ filter: 'brightness(0) invert(1)' }} priority />
+               <Image src="/logo.png" alt="JJ Bags Logo" width={114} height={32} style={{ filter: 'brightness(0) invert(1)' }} priority data-ai-hint="logo dark"/>
             </Link>
             <p className="text-white/70 text-sm max-w-xs">
               Premium, eco-friendly bags that blend sustainability with style.

@@ -1,11 +1,8 @@
 
 "use client";
 
-import { useActionState } from "react";
-import { useFormStatus } from "react-dom";
-import { useEffect } from "react";
+import { useState, type FormEvent } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { submitCorporateOrder } from "@/lib/actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -13,8 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { AnimatedSection } from "@/components/animated-section";
 
-function SubmitButton() {
-  const { pending } = useFormStatus();
+function SubmitButton({ pending }: { pending: boolean }) {
   return (
     <Button type="submit" disabled={pending} size="lg" className="w-full">
       {pending ? "Submitting Inquiry..." : "Submit Inquiry"}
@@ -24,25 +20,45 @@ function SubmitButton() {
 
 export default function CorporateOrdersPage() {
   const { toast } = useToast();
-  const [state, formAction] = useActionState(submitCorporateOrder, {
-    message: "",
-    errors: {},
-  });
+  const [pending, setPending] = useState(false);
+  const [bagType, setBagType] = useState('');
 
-  useEffect(() => {
-    if (state.message && !Object.keys(state.errors).length) {
-      toast({
-        title: "Inquiry Submitted!",
-        description: state.message,
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setPending(true);
+
+    const formData = new FormData(event.currentTarget);
+    
+    const googleScriptWebAppUrl = "https://script.google.com/macros/s/AKfycbyOm7DRDO3uZl_33RANf7oWg8jM_LJp0LKWVlCJZ-QPHV85uLHcIq-1Wnq9i6s5Mwqy/exec";
+
+    try {
+      const response = await fetch(googleScriptWebAppUrl, {
+        method: "POST",
+        body: formData,
       });
-    } else if (state.message) {
+
+      const result = await response.json();
+
+      if (result.result === "success") {
+        toast({
+          title: "Inquiry Submitted!",
+          description: "Thank you! Your corporate inquiry has been submitted successfully. We will get back to you shortly.",
+        });
+        (event.target as HTMLFormElement).reset();
+        setBagType('');
+      } else {
+        throw new Error(result.message || "An unknown error occurred.");
+      }
+    } catch (error) {
       toast({
         title: "Error",
-        description: state.message,
+        description: error instanceof Error ? error.message : "An unexpected error occurred. Please try again.",
         variant: "destructive"
       });
+    } finally {
+      setPending(false);
     }
-  }, [state, toast]);
+  };
 
   return (
     <div className="w-full">
@@ -59,33 +75,38 @@ export default function CorporateOrdersPage() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div className="md:order-2 bg-card p-6 md:p-8 rounded-lg shadow-lg">
                     <h3 className="text-2xl font-headline mb-4">Request a Quote</h3>
-                     <form action={formAction} className="space-y-4">
+                     <form onSubmit={handleSubmit} className="space-y-4">
+                        <input type="hidden" name="formType" value="corporate" />
+                         {/* Honeypot field for spam protection */}
+                        <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden="true">
+                            <input type="text" name="honeypot" tabIndex={-1} autoComplete="off" />
+                        </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                            <div>
                                 <Label htmlFor="companyName">Company Name</Label>
                                 <Input id="companyName" name="companyName" required />
-                                {state.errors?.companyName && <p className="text-sm text-destructive mt-1">{state.errors.companyName[0]}</p>}
                             </div>
                             <div>
                                 <Label htmlFor="contactPerson">Contact Person</Label>
                                 <Input id="contactPerson" name="contactPerson" required />
-                                {state.errors?.contactPerson && <p className="text-sm text-destructive mt-1">{state.errors.contactPerson[0]}</p>}
                             </div>
                         </div>
                         <div>
                             <Label htmlFor="email">Email</Label>
                             <Input id="email" name="email" type="email" required />
-                            {state.errors?.email && <p className="text-sm text-destructive mt-1">{state.errors.email[0]}</p>}
+                        </div>
+                         <div>
+                            <Label htmlFor="phone">Phone (Optional)</Label>
+                            <Input id="phone" name="phone" type="tel" />
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                              <div>
                                 <Label htmlFor="quantity">Estimated Quantity</Label>
                                 <Input id="quantity" name="quantity" type="number" min="10" placeholder="Min. 10" required />
-                                {state.errors?.quantity && <p className="text-sm text-destructive mt-1">{state.errors.quantity[0]}</p>}
                             </div>
                             <div>
                                 <Label htmlFor="bagType">Bag Type</Label>
-                                <Select name="bagType" required>
+                                <Select name="bagType" required onValueChange={setBagType} value={bagType}>
                                     <SelectTrigger id="bagType">
                                         <SelectValue placeholder="Select type" />
                                     </SelectTrigger>
@@ -96,15 +117,13 @@ export default function CorporateOrdersPage() {
                                         <SelectItem value="other">Other/Not Sure</SelectItem>
                                     </SelectContent>
                                 </Select>
-                                {state.errors?.bagType && <p className="text-sm text-destructive mt-1">{state.errors.bagType[0]}</p>}
                             </div>
                         </div>
                         <div>
                             <Label htmlFor="requirements">Specific Requirements</Label>
                             <Textarea id="requirements" name="requirements" rows={4} placeholder="Describe your needs (e.g., custom printing, size, timeline)..." required />
-                            {state.errors?.requirements && <p className="text-sm text-destructive mt-1">{state.errors.requirements[0]}</p>}
                         </div>
-                        <SubmitButton />
+                        <SubmitButton pending={pending} />
                     </form>
                 </div>
                  <div className="md:order-1">

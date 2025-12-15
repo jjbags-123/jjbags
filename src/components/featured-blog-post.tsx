@@ -63,6 +63,7 @@ export function FeaturedBlogPost({ post }: FeaturedBlogPostProps) {
                 className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 50vw"
                 data-ai-hint={image.imageHint}
+                priority
                 />
             )}
         </div>

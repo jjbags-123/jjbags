@@ -1,11 +1,8 @@
 
 "use client";
 
-import { useActionState } from "react";
-import { useFormStatus } from "react-dom";
-import { useEffect } from "react";
+import { useState, type FormEvent } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { submitContactForm } from "@/lib/actions";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -14,8 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { FiPhone, FiMail, FiMapPin } from "react-icons/fi";
 import { AnimatedSection } from "@/components/animated-section";
 
-function SubmitButton() {
-  const { pending } = useFormStatus();
+function SubmitButton({ pending }: { pending: boolean }) {
   return (
     <Button type="submit" disabled={pending} className="w-full">
       {pending ? "Submitting..." : "Send Message"}
@@ -48,25 +44,43 @@ const contactDetails = [
 
 export default function ContactPage() {
   const { toast } = useToast();
-  const [state, formAction] = useActionState(submitContactForm, {
-    message: "",
-    errors: {},
-  });
+  const [pending, setPending] = useState(false);
 
-  useEffect(() => {
-    if (state.message && state.errors.message === undefined) {
-      toast({
-        title: "Success!",
-        description: state.message,
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setPending(true);
+
+    const formData = new FormData(event.currentTarget);
+    
+    const googleScriptWebAppUrl = "https://script.google.com/macros/s/AKfycbyOm7DRDO3uZl_33RANf7oWg8jM_LJp0LKWVlCJZ-QPHV85uLHcIq-1Wnq9i6s5Mwqy/exec";
+
+    try {
+      const response = await fetch(googleScriptWebAppUrl, {
+        method: "POST",
+        body: formData,
       });
-    } else if (state.message) {
+
+      const result = await response.json();
+
+      if (result.result === "success") {
         toast({
-            title: "Error",
-            description: state.message,
-            variant: "destructive"
-        })
+          title: "Success!",
+          description: "Thank you for your message. We've received it and will respond as soon as possible.",
+        });
+        (event.target as HTMLFormElement).reset();
+      } else {
+        throw new Error(result.message || "An unknown error occurred.");
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: error instanceof Error ? error.message : "An unexpected error occurred. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setPending(false);
     }
-  }, [state, toast]);
+  };
 
   return (
     <div className="w-full bg-secondary/30">
@@ -116,31 +130,32 @@ export default function ContactPage() {
 
                     <div>
                         <CardHeader className="p-0 mb-6">
-                            <CardTitle className="text-3xl font-headline">Get in Touch</CardTitle>
+                            <CardTitle className="text-3xl font-headline">Send us a Message</CardTitle>
                             <CardDescription>We'd love to hear from you. Fill out the form below.</CardDescription>
                         </CardHeader>
-                        <form action={formAction} className="space-y-4">
+                        <form onSubmit={handleSubmit} className="space-y-4">
+                            <input type="hidden" name="formType" value="contact" />
+                             {/* Honeypot field for spam protection */}
+                            <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden="true">
+                                <input type="text" name="honeypot" tabIndex={-1} autoComplete="off" />
+                            </div>
                             <div>
                                 <Label htmlFor="name">Name</Label>
                                 <Input id="name" name="name" required />
-                                 {state.errors?.name && <p className="text-sm text-destructive mt-1">{state.errors.name[0]}</p>}
                             </div>
                             <div>
                                 <Label htmlFor="email">Email</Label>
                                 <Input id="email" name="email" type="email" required />
-                                 {state.errors?.email && <p className="text-sm text-destructive mt-1">{state.errors.email[0]}</p>}
                             </div>
                             <div>
                                 <Label htmlFor="phone">Phone (Optional)</Label>
                                 <Input id="phone" name="phone" type="tel" />
-                                 {state.errors?.phone && <p className="text-sm text-destructive mt-1">{state.errors.phone[0]}</p>}
                             </div>
                             <div>
                                 <Label htmlFor="message">Message</Label>
                                 <Textarea id="message" name="message" rows={5} required />
-                                 {state.errors?.message && <p className="text-sm text-destructive mt-1">{state.errors.message[0]}</p>}
                             </div>
-                            <SubmitButton />
+                            <SubmitButton pending={pending} />
                         </form>
                     </div>
             </div>

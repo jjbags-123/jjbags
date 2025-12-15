@@ -125,6 +125,42 @@
       "description": "A group of artisans working together, representing community and fair trade.",
       "imageUrl": "/images/blog/Fair Trade & Ethical Manufacturing.webp",
       "imageHint": "artisan community"
+    },
+    {
+      "id": "about-mission",
+      "description": "Hands holding a sprout, symbolizing our mission for a greener planet",
+      "imageUrl": "/images/our-mission.webp",
+      "imageHint": "green planet"
+    },
+    {
+      "id": "about-sustainability",
+      "description": "A lush green leaf, representing our commitment to sustainability",
+      "imageUrl": "/images/sustainability.webp",
+      "imageHint": "green leaf"
+    },
+    {
+      "id": "about-fair-practices",
+      "description": "Two people shaking hands, symbolizing our commitment to fair practices",
+      "imageUrl": "/images/fair-practices.webp",
+      "imageHint": "handshake business"
+    },
+    {
+      "id": "about-innovation",
+      "description": "A lightbulb glowing, representing innovation in design",
+      "imageUrl": "/images/innovation.webp",
+      "imageHint": "innovation lightbulb"
+    },
+    {
+      "id": "about-global-reach",
+      "description": "A map of the world, showing our global reach",
+      "imageUrl": "/images/global-reach.webp",
+      "imageHint": "global map"
+    },
+    {
+      "id": "about-customization",
+      "description": "A color palette, representing customization options",
+      "imageUrl": "/images/customization.webp",
+      "imageHint": "color palette"
     }
   ]
 }

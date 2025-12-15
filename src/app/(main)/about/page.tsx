@@ -8,12 +8,12 @@ import Image from 'next/image';
 import { CtaSection } from '@/components/cta';
 import { AnimatedSection } from '@/components/animated-section';
 import { AnimatedCounter } from '@/components/animated-counter';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const missionData = {
   title: "Our Mission",
   content: "We are dedicated to crafting premium, eco-friendly bags that blend sustainability with style. Our mission is to provide a green alternative to plastic without compromising on quality or design.",
-  image: "/images/our-mission.webp",
-  alt: "Hands holding a sprout, symbolizing our mission for a greener planet"
+  imageId: "about-mission"
 }
 
 const originData = {
@@ -61,36 +61,31 @@ const sustainabilityData = {
     title: "Sustainability",
     content: "At JJ Bags, sustainability is at the heart of everything we do. We adopt clean, eco-conscious processes that reduce waste, conserve energy, and minimize our carbon footprint.",
     features: ["Renewable raw materials", "Biodegradable inks and dyes", "Energy conservation", "Waste reduction"],
-    image: "/images/sustainability.webp",
-    alt: "A lush green leaf, representing our commitment to sustainability"
+    imageId: "about-sustainability"
 };
 
 const fairPracticesData = {
     title: "Fair Practices",
     content: "We believe that sustainability goes beyond materials — it includes people too. Our bags are made under fair labor standards, where workers are provided with safe working conditions, fair wages, and respect. We partner with communities that share our values, empowering artisans and supporting livelihoods.",
-    image: "/images/fair-practices.webp",
-    alt: "Two people shaking hands, symbolizing our commitment to fair practices"
+    imageId: "about-fair-practices"
 };
 
 const innovationData = {
   title: "Innovation",
   content: "Innovation drives our designs. We continually explore new textures, materials, and eco-friendly techniques to stay ahead of trends while staying true to sustainability. From experimenting with blends of jute and cotton to incorporating reusable and multi-purpose designs, we push boundaries to create bags that are as fashionable as they are functional.",
-  image: "/images/innovation.webp",
-  alt: "A lightbulb glowing, representing innovation in design"
+  imageId: "about-innovation"
 };
 
 const globalReachData = {
     title: "Global Reach",
     content: "From local markets to international shelves, JJ Bags has grown into a globally trusted brand. Our products are exported worldwide, serving diverse industries such as retail, events, hospitality, and fashion. This global presence reflects not just our product quality but also our commitment to universal sustainability.",
-    image: "/images/global-reach.webp",
-    alt: "A map of the world, showing our global reach"
+    imageId: "about-global-reach"
 };
 
 const customizationData = {
     title: "Customization",
     content: "We understand that every brand has its own story. That's why we provide extensive customization options — from sizes and colors to unique prints and branding elements. Businesses can showcase their identity while staying eco-conscious, and individuals can own bags that reflect their personal style.",
-    image: "/images/customization.webp",
-    alt: "A color palette, representing customization options"
+    imageId: "about-customization"
 };
 
 const futureData = {
@@ -120,6 +115,13 @@ const impactData = {
 }
 
 export default function AboutPage() {
+  const missionImage = PlaceHolderImages.find(p => p.id === missionData.imageId);
+  const sustainabilityImage = PlaceHolderImages.find(p => p.id === sustainabilityData.imageId);
+  const fairPracticesImage = PlaceHolderImages.find(p => p.id === fairPracticesData.imageId);
+  const innovationImage = PlaceHolderImages.find(p => p.id === innovationData.imageId);
+  const globalReachImage = PlaceHolderImages.find(p => p.id === globalReachData.imageId);
+  const customizationImage = PlaceHolderImages.find(p => p.id === customizationData.imageId);
+
   return (
     <>
       <section className="hero">
@@ -137,9 +139,9 @@ export default function AboutPage() {
               <h2 className="section-title">{missionData.title}</h2>
               <p className="section-content">{missionData.content}</p>
             </div>
-            <div className="relative aspect-video w-full rounded-lg overflow-hidden shadow-lg">
-                <Image src={missionData.image} alt={missionData.alt} fill className="object-cover"/>
-            </div>
+            {missionImage && <div className="relative aspect-video w-full rounded-lg overflow-hidden shadow-lg">
+                <Image src={missionImage.imageUrl} alt={missionImage.description} fill className="object-cover" data-ai-hint={missionImage.imageHint} />
+            </div>}
           </div>
         </div>
       </AnimatedSection>
@@ -196,9 +198,9 @@ export default function AboutPage() {
                           {sustainabilityData.features.map((feature, i) => <li key={i} className="feature-item">{feature}</li>)}
                       </ul>
                   </div>
-                  <div className="split-visual relative aspect-video w-full rounded-lg overflow-hidden shadow-lg">
-                      <Image src={sustainabilityData.image} alt={sustainabilityData.alt} fill className="object-cover"/>
-                  </div>
+                  {sustainabilityImage && <div className="split-visual relative aspect-video w-full rounded-lg overflow-hidden shadow-lg">
+                      <Image src={sustainabilityImage.imageUrl} alt={sustainabilityImage.description} fill className="object-cover" data-ai-hint={sustainabilityImage.imageHint} />
+                  </div>}
               </div>
           </div>
       </AnimatedSection>
@@ -206,9 +208,9 @@ export default function AboutPage() {
       <AnimatedSection as="section" className="section">
           <div className="container">
               <div className="split-section">
-                   <div className="split-visual relative aspect-video w-full rounded-lg overflow-hidden shadow-lg">
-                      <Image src={fairPracticesData.image} alt={fairPracticesData.alt} fill className="object-cover"/>
-                  </div>
+                   {fairPracticesImage && <div className="split-visual relative aspect-video w-full rounded-lg overflow-hidden shadow-lg">
+                      <Image src={fairPracticesImage.imageUrl} alt={fairPracticesImage.description} fill className="object-cover" data-ai-hint={fairPracticesImage.imageHint}/>
+                  </div>}
                   <div className="split-content">
                       <h2 className="section-title">{fairPracticesData.title}</h2>
                       <p className="section-content">{fairPracticesData.content}</p>
@@ -270,9 +272,9 @@ export default function AboutPage() {
                     <h2 className="section-title">{innovationData.title}</h2>
                     <p className="section-content">{innovationData.content}</p>
                 </div>
-                <div className="split-visual relative aspect-video w-full rounded-lg overflow-hidden shadow-lg">
-                    <Image src={innovationData.image} alt={innovationData.alt} fill className="object-cover"/>
-                </div>
+                {innovationImage && <div className="split-visual relative aspect-video w-full rounded-lg overflow-hidden shadow-lg">
+                    <Image src={innovationImage.imageUrl} alt={innovationImage.description} fill className="object-cover" data-ai-hint={innovationImage.imageHint} />
+                </div>}
             </div>
         </div>
       </AnimatedSection>
@@ -280,9 +282,9 @@ export default function AboutPage() {
        <AnimatedSection as="section" className="section bg-secondary/80">
         <div className="container">
             <div className="split-section">
-                 <div className="split-visual relative aspect-video w-full rounded-lg overflow-hidden shadow-lg">
-                    <Image src={globalReachData.image} alt={globalReachData.alt} fill className="object-cover"/>
-                </div>
+                 {globalReachImage && <div className="split-visual relative aspect-video w-full rounded-lg overflow-hidden shadow-lg">
+                    <Image src={globalReachImage.imageUrl} alt={globalReachImage.description} fill className="object-cover" data-ai-hint={globalReachImage.imageHint} />
+                </div>}
                 <div className="split-content">
                     <h2 className="section-title">{globalReachData.title}</h2>
                     <p className="section-content">{globalReachData.content}</p>
@@ -298,9 +300,9 @@ export default function AboutPage() {
                     <h2 className="section-title">{customizationData.title}</h2>
                     <p className="section-content">{customizationData.content}</p>
                 </div>
-                <div className="split-visual relative aspect-video w-full rounded-lg overflow-hidden shadow-lg">
-                    <Image src={customizationData.image} alt={customizationData.alt} fill className="object-cover"/>
-                </div>
+                {customizationImage && <div className="split-visual relative aspect-video w-full rounded-lg overflow-hidden shadow-lg">
+                    <Image src={customizationImage.imageUrl} alt={customizationImage.description} fill className="object-cover" data-ai-hint={customizationImage.imageHint} />
+                </div>}
             </div>
         </div>
       </AnimatedSection>

@@ -14,7 +14,7 @@ export function Header() {
         </div>
       <div className="container mx-auto flex h-16 items-center px-4">
         <Link href="/" className="mr-6 flex items-center space-x-2" aria-label="JJ Bags Home">
-          <Image src="/logo.png" alt="JJ Bags Logo" width={100} height={28} priority />
+          <Image src="/logo.png" alt="JJ Bags Logo" width={100} height={28} priority data-ai-hint="logo dark"/>
         </Link>
         <div className="flex-1 flex items-center justify-center">
             <MainNav />

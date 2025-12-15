@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { GiSprout, GiWashingMachine, GiRolledCloth } from 'react-icons/gi';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const features = [
   {
@@ -13,6 +14,7 @@ const features = [
     content: 'Ethically sourced jute & cotton fibers from trusted partners.',
     icon: <GiSprout className="text-primary h-6 w-6" />,
     image: '/images/making/step1.webp',
+    imageHint: 'jute fiber',
   },
   {
     step: 'Step 2',
@@ -20,6 +22,7 @@ const features = [
     content: 'Precision weaving; optional PE lamination for resilience.',
     icon: <GiRolledCloth className="text-primary h-6 w-6" />,
     image: '/images/making/step2.webp',
+    imageHint: 'weaving machine',
   },
   {
     step: 'Step 3',
@@ -27,6 +30,7 @@ const features = [
     content: 'Reinforced seams, QC checks, and customized branding.',
     icon: <GiWashingMachine className="text-primary h-6 w-6" />,
     image: '/images/making/step3.webp',
+    imageHint: 'sewing machine',
   },
 ];
 
@@ -124,6 +128,8 @@ export function HowItsMade() {
                         fill
                         className="h-full w-full transform object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
                         sizes="(max-width: 768px) 100vw, 50vw"
+                        data-ai-hint={feature.imageHint}
+                        priority={index === 0}
                       />
                       <div className="from-black/50 via-black/20 absolute inset-0 bg-gradient-to-t to-transparent" />
                       <div className="bg-background/80 absolute bottom-4 left-4 rounded-lg p-2 backdrop-blur-sm shadow-lg">
