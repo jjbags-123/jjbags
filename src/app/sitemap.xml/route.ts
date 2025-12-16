@@ -11,14 +11,16 @@ const allPaths = [...staticRoutes, ...productSlugs, ...blogPostSlugs];
 export async function GET(request: NextRequest) {
   const headers = request.headers;
   const host = headers.get('host');
+  const protocol = headers.get('x-forwarded-proto') || 'http';
 
-  let siteUrl: string;
-  if (host === 'www.jj-bags.com' || host === 'jj-bags.com') {
-    siteUrl = 'https://www.jj-bags.com';
-  } else {
-    // Default to .in for any other host (including localhost, vercel previews, etc.)
-    siteUrl = 'https://jjbags.in';
+  // Ensure host is not null or undefined to construct a valid URL
+  if (!host) {
+    return new Response('Could not determine host from request headers.', {
+      status: 400,
+    });
   }
+
+  const siteUrl = `${protocol}://${host}`;
 
   const sitemapEntries = allPaths
     .map(path => {
